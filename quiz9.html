@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity MCQ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cybersecurity Multiple-Choice Questions</h1>
+
+    <form id="quizForm">
+        <div class="question active" id="question1">
+            <h3>1. What is a script kiddie?</h3>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A"> A) A professional hacker who writes their own scripts</label>
+                <label><input type="radio" name="q1" value="B"> B) An inexperienced hacker who uses existing scripts to exploit vulnerabilities</label>
+                <label><input type="radio" name="q1" value="C"> C) A cybersecurity expert who develops security protocols</label>
+                <label><input type="radio" name="q1" value="D"> D) A software developer specializing in scripting languages</label>
+            </div>
+            <div class="feedback" id="feedback-q1"></div>
+            <button type="button" onclick="nextQuestion(1)">Next</button>
+        </div>
+
+        <div class="question" id="question2">
+            <h3>2. What does vishing involve?</h3>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A"> A) Sending fraudulent emails to obtain sensitive information</label>
+                <label><input type="radio" name="q2" value="B"> B) Using phone calls to deceive individuals into revealing personal information</label>
+                <label><input type="radio" name="q2" value="C"> C) Installing malware on a victim's computer</label>
+                <label><input type="radio" name="q2" value="D"> D) Creating fake websites to steal login credentials</label>
+            </div>
+            <div class="feedback" id="feedback-q2"></div>
+            <button type="button" onclick="nextQuestion(2)">Next</button>
+        </div>
+
+        <div class="question" id="question3">
+            <h3>3. What does the CIA triad stand for in cybersecurity?</h3>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A"> A) Confidentiality, Integrity, Availability</label>
+                <label><input type="radio" name="q3" value="B"> B) Confidentiality, Information, Access</label>
+                <label><input type="radio" name="q3" value="C"> C) Control, Integrity, Authentication</label>
+                <label><input type="radio" name="q3" value="D"> D) Cybersecurity, Information, Assurance</label>
+            </div>
+            <div class="feedback" id="feedback-q3"></div>
+            <button type="button" onclick="nextQuestion(3)">Next</button>
+        </div>
+
+        <div class="question" id="question4">
+            <h3>4. What is tailgating in the context of physical security?</h3>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A"> A) Following someone closely to gain unauthorized access to a restricted area</label>
+                <label><input type="radio" name="q4" value="B"> B) Using a fake ID to enter a secure building</label>
+                <label><input type="radio" name="q4" value="C"> C) Hacking into a computer network</label>
+                <label><input type="radio" name="q4" value="D"> D) Installing surveillance cameras in a secure area</label>
+            </div>
+            <div class="feedback" id="feedback-q4"></div>
+            <button type="button" onclick="showResults()">Submit</button>
+        </div>
+    </form>
+
+    <div class="result" id="result"></div>
+
+    <script>
+        function nextQuestion(currentQuestion) {
+            document.getElementById('question' + currentQuestion).classList.remove('active');
+            document.getElementById('question' + (currentQuestion + 1)).classList.add('active');
+        }
+
+        function showResults() {
+            const answers = {
+                q1: 'B',
+                q2: 'B',
+                q3: 'A',
+                q4: 'A'
+            };
+
+            let score = 0;
+            const form = document.getElementById('quizForm');
+            const resultDiv = document.getElementById('result');
+
+            for (const [question, correctAnswer] of Object.entries(answers)) {
+                const userAnswer = form.elements[question].value;
+                const feedbackDiv = document.getElementById('feedback-' + question);
+                if (userAnswer === correctAnswer) {
+                    score++;
+                    feedbackDiv.textContent = 'Correct!';
+                    feedbackDiv.style.color = 'green';
+                } else {
+                    feedbackDiv.textContent = 'Incorrect. The correct answer is ' + correctAnswer + '.';
+                    feedbackDiv.style.color = 'red';
+                }
+            }
+
+            resultDiv.textContent = 'Your score is ' + score + ' out of ' + Object.keys(answers).length + '.';
+        }
+    </script>
+</body>
+</html>
