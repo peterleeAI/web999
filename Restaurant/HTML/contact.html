@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <!--Navigation Bar-->
+    <header>  
+        <nav>
+            <ul class="navigation">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li id="selected">Contact</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+        <h1>Healthy Meal Restaurant</h1>
+    </header> 
+    <main>
+        <!-- Contact Page Content -->
+        <section id="contact-page">
+            <h2>Contact Us</h2>
+            <p>We’d love to hear from you! Reach out with any questions or reservations.</p>
+            <p>Reach out for reservations or inquiries!</p>
+            <form action="contact-form-handler.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+        <section>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?..."></iframe>
+            </div>            
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Healthy Meal Restaurant. All rights reserved.</p>
+        <ul>
+            <li><a href="https://facebook.com">Facebook</a></li>
+            <li><a href="https://instagram.com">Instagram</a></li>
+        </ul>
+    </footer>
+</body>
+</html>
