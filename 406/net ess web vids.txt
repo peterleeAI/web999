@@ -1,0 +1,40 @@
+Instructions to learner:
+Skills Demonstration 2: Build and deploy a workgroup LAN, to include at least one hybrid system and at least one a wireless device
+In completing this skills demonstration the learner will to demonstrate knowledge and competence in LOs 7,9,10:
+
+•use a switch or router to connect multiple digital devices together
+•configure (non-routable) IP addresses on all networked devices
+•establish a workgroup /  user  group    and connect a variety of digital devices/systems to it
+•analyse and assess basic network connectivity and performance (as appropriate)
+•perform simple troubleshooting (as appropriate)
+•correctly document tasks undertaken and/or issues encountered
+
+live web update html
+index.html 18vids 
+pg1 vid day https://youtu.be/W7076RPIgfQ   exam theory  25min
+pg1  
+
+actual pg1
+discuss vid1  https://youtu.be/Ug9ljA-M1c0 proxmox wed 
+discuss wireshark lab exer 
+discuss acl lab1
+discuss  vlan lab1 vlans https://youtu.be/WMbXgtxTrBY  
+discuss proxmox lab 1 server and kali
+discuss linux lab
+
+https://youtu.be/Ug9ljA-M1c0  
+
+
+
+
+
+index 2 12 vids
+pg2 vid day https://youtu.be/W7076RPIgfQ   kali 25min
+pg2  link discuss vid1 kali  https://youtu.be/Yg4tV98y69I 
+discuss vid 2  https://youtu.be/Ug9ljA-M1c0
+discuss wireshark lab vid https://youtu.be/NwY57Wv0yfA
+discuss acl lab1 check 
+discuss  vlan lab1 check 
+discuss proxmox lab 1 windows 10 iso 
+discuss proxmox lab 2 server and kali 
+discuss the linux lab 
