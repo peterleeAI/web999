@@ -1,0 +1,6 @@
+let button = document.getElementsByClassName('btnMenu')
+button[0].addEventListener('click',()=>{window.location.href="index.html"})
+button[1].addEventListener('click',()=>{window.location.href="Menu.html"})
+button[2].addEventListener('click',()=>{window.location.href="orders.html"})
+button[3].addEventListener('click',()=>{window.location.href="aboutus.html"})
+button[4].addEventListener('click',()=>{window.location.href="contactus.html"})

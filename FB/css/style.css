@@ -1,0 +1,183 @@
+body::before{
+    background-image: url(../img/mountains1.jpeg);
+    background-size: cover;
+    padding-bottom: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    z-index: -1; /* places the background behind the content */
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left:0;
+}
+
+header{
+display: flex; /* layout for aligning items */
+align-items: center;
+justify-content: center;
+padding-top: 20px;
+padding-bottom: 50px;
+}
+
+#orchid{
+    width: 120px; /* image dimensions */
+    height: 120px;
+}
+
+#flag{
+    width: 1100px;
+    height: 150px;
+}
+
+#logo{
+    width: 120px;
+    height: 120px;
+}
+
+#btn{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Spreads buttons evenly */
+    padding-left: 120px;
+    padding-right: 120px;
+    
+}
+
+.btnMenu{
+    background-color: #293170; /* color, font and size of the buttons letters*/
+    color: white;
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+#coffee{
+    width: 300px;
+    height: 300px;
+}
+
+#stamp{
+    width: 200px;
+    height: 200px;
+}
+
+#pinto{
+    width: 400px;
+    height: 250px;
+}
+
+#imgbox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 60px;
+    padding-bottom: 50px;
+}
+
+#info{
+    color: white;
+    font-family: cursive;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers text and content in the column */
+}
+
+#chifrijo{
+    width: 250px;
+    height: 300px;
+}
+
+#beans{
+    width: 400px;
+    height: 250px;
+}
+
+#menubox{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 90px;
+    padding-right: 90px;
+    padding-top: 20px;
+}
+
+#titlebox{
+    font-family: cursive;
+    color: #652E1B;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+#coffeecup{
+    width: 110px;
+    height: 110px;
+}
+
+#contentbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; /* centers items horizontally */
+    padding-left: 90px;
+    padding-right: 90px;
+}
+
+#coffee{
+    width: 300px;
+    height: 250px;
+}
+
+#coffeeplant{
+    width: 250px;
+    height: 300px;
+}
+
+#text{
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    opacity: 0.5; /* makes the background a bit transparent */
+    margin: 0px 15px 0px 15px;
+    font-family: cursive;
+    color: #652E1B;
+    font-size: 14px;
+}
+
+#contactinfo{
+    font-family: cursive;
+    color: #652E1B;
+    background-color: white;
+    opacity: 0.5;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#contactinfobox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#fallingcoffee{
+    width: 250px;
+    height: 400px;
+}
+
+#inquiries{
+    font-family: cursive;
+    color: #652E1B;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
