@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Page Quiz Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .quiz-section {
+            display: none;
+        }
+        .quiz-section.active {
+            display: block;
+        }
+        .question {
+            margin-bottom: 1.5rem;
+        }
+        .option {
+            display: block;
+            background-color: #f9fafb;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #e5e7eb;
+        }
+        .option:hover {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+        }
+        .option input {
+            margin-right: 0.75rem;
+        }
+        .correct-answer {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .wrong-answer {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .correct-answer::after {
+            content: "✓";
+            color: #10b981;
+            float: right;
+            font-weight: bold;
+        }
+        .wrong-answer::after {
+            content: "✗";
+            color: #ef4444;
+            float: right;
+            font-weight: bold;
+        }
+        .disabled-input, .disabled-input * {
+            pointer-events: none;
+            cursor: default;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">Quiz Hub</h1>
+    <p class="text-center text-gray-600 mb-8">Test your knowledge with these timed quizzes!</p>
+
+    <!-- Navigation Buttons -->
+    <div class="flex justify-center space-x-4 mb-8">
+        <button id="nav-quiz1" class="px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold shadow-lg hover:bg-indigo-700 transition duration-300">
+            Programming Quiz
+        </button>
+        <button id="nav-quiz2" class="px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold shadow-lg hover:bg-indigo-700 transition duration-300">
+            CompTIA A+ Quiz
+        </button>
+        <button id="nav-quiz3" class="px-6 py-3 bg-indigo-600 text-white rounded-full font-semibold shadow-lg hover:bg-indigo-700 transition duration-300">
+            CompTIA Security+ Quiz
+        </button>
+    </div>
+
+    <!-- Quiz Sections -->
+    <div id="quiz-1" class="quiz-section active">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-700">Basic Programming Quiz</h2>
+            <div id="timer1" class="text-xl font-bold text-gray-500">5:00</div>
+        </div>
+        <div id="quiz-container-1"></div>
+        <div id="results-1" class="hidden">
+            <div class="p-6 mt-8 rounded-xl bg-gray-100 border border-gray-200">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your Score: <span id="score-1"></span></h3>
+                <div id="result-details-1"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-2" class="quiz-section">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-700">CompTIA A+ Quiz</h2>
+            <div id="timer2" class="text-xl font-bold text-gray-500">5:00</div>
+        </div>
+        <div id="quiz-container-2"></div>
+        <div id="results-2" class="hidden">
+            <div class="p-6 mt-8 rounded-xl bg-gray-100 border border-gray-200">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your Score: <span id="score-2"></span></h3>
+                <div id="result-details-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="quiz-3" class="quiz-section">
+        <div class="flex justify-between items-center mb-6">
+            <h2 class="text-2xl font-bold text-gray-700">CompTIA Security+ Quiz</h2>
+            <div class="text-xl font-bold text-gray-500" id="timer3">5:00</div>
+        </div>
+        <div id="quiz-container-3"></div>
+        <div id="results-3" class="hidden">
+            <div class="p-6 mt-8 rounded-xl bg-gray-100 border border-gray-200">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 text-center">Your Score: <span id="score-3"></span></h3>
+                <div id="result-details-3"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const quizzes = {
+        quiz1: {
+            questions: [
+                {
+                    question: "What does HTML stand for?",
+                    options: ["Hyper Text Markup Language", "Hyperlinks and Text Markup Language", "Home Tool Markup Language", "Hyper Tool Multi Language"],
+                    answer: "Hyper Text Markup Language"
+                },
+                {
+                    question: "Which of the following is a dynamically typed programming language?",
+                    options: ["C++", "Java", "Python", "Rust"],
+                    answer: "Python"
+                },
+                {
+                    question: "What is the correct way to define a function in Python?",
+                    options: ["function my_func()", "def my_func():", "create function my_func()", "function: my_func()"],
+                    answer: "def my_func():"
+                },
+                {
+                    question: "What is the output of the Python code: `print(type([]))`?",
+                    options: ["<class 'list'>", "<class 'array'>", "<class 'tuple'>", "<class 'dict'>"],
+                    answer: "<class 'list'>"
+                },
+                {
+                    question: "Which CSS property is used to change the text color of an element?",
+                    options: ["font-color", "text-color", "color", "fgcolor"],
+                    answer: "color"
+                },
+                {
+                    question: "What is a 'for' loop primarily used for?",
+                    options: ["Making decisions in code", "Executing a block of code a specific number of times", "Creating a new variable", "Handling user input"],
+                    answer: "Executing a block of code a specific number of times"
+                },
+                {
+                    question: "What is the purpose of a constructor in object-oriented programming?",
+                    options: ["To destroy an object", "To initialize an object's state", "To define a new class", "To return a value from a function"],
+                    answer: "To initialize an object's state"
+                },
+                {
+                    question: "In JavaScript, which keyword is used to declare a variable with block scope?",
+                    options: ["var", "let", "const", "both let and const"],
+                    answer: "both let and const"
+                },
+                {
+                    question: "What is the name of a variable that can hold either true or false values?",
+                    options: ["String", "Integer", "Boolean", "Float"],
+                    answer: "Boolean"
+                },
+                {
+                    question: "What is a common use case for a 'while' loop?",
+                    options: ["Iterating over an array", "Executing code forever", "Running a block of code as long as a condition is true", "Adding numbers together"],
+                    answer: "Running a block of code as long as a condition is true"
+                },
+                {
+                    question: "What is the term for a named block of code that can be called repeatedly?",
+                    options: ["Variable", "Function", "Module", "Class"],
+                    answer: "Function"
+                },
+                {
+                    question: "What is the primary function of CSS?",
+                    options: ["Defining website structure", "Adding interactivity", "Styling a web page", "Handling server-side logic"],
+                    answer: "Styling a web page"
+                },
+                {
+                    question: "In programming, what is an 'if-else' statement used for?",
+                    options: ["Looping through data", "Making a decision based on a condition", "Creating a new class", "Defining a variable"],
+                    answer: "Making a decision based on a condition"
+                },
+                {
+                    question: "What is the main purpose of comments in code?",
+                    options: ["To execute special instructions", "To create errors", "To explain the code to other developers (and your future self)", "To prevent the code from running"],
+                    answer: "To explain the code to other developers (and your future self)"
+                },
+                {
+                    question: "What is an API?",
+                    options: ["Application Programming Interface", "Advanced Personal Interface", "Automated Program Indicator", "Application Proxy Internet"],
+                    answer: "Application Programming Interface"
+                }
+            ]
+        },
+        quiz2: {
+            questions: [
+                {
+                    question: "Which of the following is an example of an input device?",
+                    options: ["Monitor", "Speaker", "Keyboard", "Printer"],
+                    answer: "Keyboard"
+                },
+                {
+                    question: "What is the function of the CPU?",
+                    options: ["Storing data permanently", "Executing instructions and processing data", "Displaying images on a screen", "Connecting to the internet"],
+                    answer: "Executing instructions and processing data"
+                },
+                {
+                    question: "Which type of memory is volatile and loses its data when power is turned off?",
+                    options: ["ROM", "SSD", "RAM", "Hard Drive"],
+                    answer: "RAM"
+                },
+                {
+                    question: "What is a common port for connecting a monitor to a computer?",
+                    options: ["HDMI", "USB", "Ethernet", "PS/2"],
+                    answer: "HDMI"
+                },
+                {
+                    question: "What does DHCP stand for?",
+                    options: ["Dynamic Host Configuration Protocol", "Data Handling Communication Protocol", "Digital Host Control Protocol", "Direct Hardware Connection Protocol"],
+                    answer: "Dynamic Host Configuration Protocol"
+                },
+                {
+                    question: "What is the purpose of an IP address?",
+                    options: ["To identify a file on a computer", "To provide a physical address for a network device", "To uniquely identify a device on a network", "To store a password securely"],
+                    answer: "To uniquely identify a device on a network"
+                },
+                {
+                    question: "Which command is used to display the network configuration of a Windows machine?",
+                    options: ["ifconfig", "ipconfig", "netstat", "ping"],
+                    answer: "ipconfig"
+                },
+                {
+                    question: "What is the most common operating system for desktop computers?",
+                    options: ["Linux", "macOS", "Chrome OS", "Windows"],
+                    answer: "Windows"
+                },
+                {
+                    question: "What is the best practice for preventing dust buildup inside a computer case?",
+                    options: ["Using an air compressor", "Using a soft cloth", "Using a vacuum cleaner", "Using canned compressed air"],
+                    answer: "Using canned compressed air"
+                },
+                {
+                    question: "Which tool is used to remove a CPU from its socket?",
+                    options: ["Phillips screwdriver", "Flat-head screwdriver", "Tweezers", "A CPU removal tool or lever"],
+                    answer: "A CPU removal tool or lever"
+                },
+                {
+                    question: "What is the primary function of a motherboard?",
+                    options: ["To store data", "To provide a power source", "To connect and allow communication between all computer components", "To cool the CPU"],
+                    answer: "To connect and allow communication between all computer components"
+                },
+                {
+                    question: "What does the term 'BIOS' stand for?",
+                    options: ["Basic Input/Output System", "Binary Input Operating System", "Byte Integrated Operating System", "Basic Internal Operation System"],
+                    answer: "Basic Input/Output System"
+                },
+                {
+                    question: "Which of these is a common troubleshooting step for a non-responsive application?",
+                    options: ["Restarting the computer", "Reinstalling the operating system", "Checking the network cable", "Updating the drivers"],
+                    answer: "Restarting the computer"
+                },
+                {
+                    question: "What is the purpose of a solid-state drive (SSD)?",
+                    options: ["To provide power to the computer", "To store data using non-volatile flash memory", "To manage network traffic", "To cool the CPU"],
+                    answer: "To store data using non-volatile flash memory"
+                },
+                {
+                    question: "Which peripheral port is commonly used for printers and scanners?",
+                    options: ["USB", "VGA", "Ethernet", "PS/2"],
+                    answer: "USB"
+                }
+            ]
+        },
+        quiz3: {
+            questions: [
+                {
+                    question: "What type of malware is disguised as a legitimate program?",
+                    options: ["Virus", "Worm", "Trojan", "Spyware"],
+                    answer: "Trojan"
+                },
+                {
+                    question: "Which security principle ensures that data is not altered or destroyed in an unauthorized manner?",
+                    options: ["Confidentiality", "Integrity", "Availability", "Non-repudiation"],
+                    answer: "Integrity"
+                },
+                {
+                    question: "What is a 'phishing' attack?",
+                    options: ["An attack that steals passwords by guessing", "An attack that encrypts data and demands a ransom", "A fraudulent attempt to obtain sensitive information by posing as a trustworthy entity", "An attack that overwhelms a system with traffic"],
+                    answer: "A fraudulent attempt to obtain sensitive information by posing as a trustworthy entity"
+                },
+                {
+                    question: "Which of the following is a common method for network perimeter defense?",
+                    options: ["Antivirus software", "Firewall", "Password manager", "Data encryption"],
+                    answer: "Firewall"
+                },
+                {
+                    question: "What does a VPN primarily provide?",
+                    options: ["Faster internet speed", "A secure, encrypted connection over a public network", "Protection against physical theft", "Increased storage capacity"],
+                    answer: "A secure, encrypted connection over a public network"
+                },
+                {
+                    question: "What is the purpose of a brute-force attack?",
+                    options: ["To discover a user's password by trying every possible combination", "To trick a user into revealing their credentials", "To exploit a software vulnerability", "To monitor network traffic"],
+                    answer: "To discover a user's password by trying every possible combination"
+                },
+                {
+                    question: "Which cryptographic method uses the same key for both encryption and decryption?",
+                    options: ["Asymmetric encryption", "Symmetric encryption", "Hashing", "Digital signatures"],
+                    answer: "Symmetric encryption"
+                },
+                {
+                    question: "What is a 'zero-day' vulnerability?",
+                    options: ["A vulnerability that has been patched for over a year", "A vulnerability in a system that has not yet been discovered by the software vendor", "A vulnerability that can be exploited on the first day of an attack", "A vulnerability with zero impact"],
+                    answer: "A vulnerability in a system that has not yet been discovered by the software vendor"
+                },
+                {
+                    question: "What is the primary goal of the security principle of 'availability'?",
+                    options: ["To ensure only authorized users can access data", "To ensure data is not altered", "To ensure systems and data are accessible when needed", "To prevent users from accessing certain resources"],
+                    answer: "To ensure systems and data are accessible when needed"
+                },
+                {
+                    question: "Which of the following is a form of social engineering?",
+                    options: ["DDoS attack", "Phishing", "Buffer overflow", "Cross-site scripting"],
+                    answer: "Phishing"
+                },
+                {
+                    question: "What is a security measure used to restrict access to a network from unauthorized users?",
+                    options: ["A VPN", "A firewall", "An SSD", "A printer"],
+                    answer: "A firewall"
+                },
+                {
+                    question: "What is the term for a malicious program that replicates itself by infecting other files?",
+                    options: ["Trojan", "Worm", "Virus", "Ransomware"],
+                    answer: "Virus"
+                },
+                {
+                    question: "Which of the following is an example of strong authentication?",
+                    options: ["Using only a password", "Using a password and a PIN", "Using a password and a fingerprint scan", "Using a password and a security question"],
+                    answer: "Using a password and a fingerprint scan"
+                },
+                {
+                    question: "What is a key difference between symmetric and asymmetric encryption?",
+                    options: ["Key length", "The number of keys used", "The speed of encryption", "The type of data encrypted"],
+                    answer: "The number of keys used"
+                },
+                {
+                    question: "What is the best practice for managing passwords?",
+                    options: ["Using the same password for all accounts", "Using simple, easy-to-remember passwords", "Using a unique, complex password for each account", "Writing down passwords on a sticky note"],
+                    answer: "Using a unique, complex password for each account"
+                }
+            ]
+        }
+    };
+
+    let timerId;
+    let quizActive = 'quiz1';
+    let timers = {};
+    let isQuizActive = {};
+
+    const timerDuration = 5 * 60; // 5 minutes in seconds
+
+    // Function to handle page navigation
+    function navigate(targetQuiz) {
+        // Stop the timer on the current quiz if it's running
+        if (isQuizActive[quizActive] && timers[quizActive]) {
+            clearInterval(timers[quizActive]);
+            isQuizActive[quizActive] = false;
+        }
+
+        const sections = document.querySelectorAll('.quiz-section');
+        sections.forEach(section => section.classList.remove('active'));
+        document.getElementById(targetQuiz).classList.add('active');
+        quizActive = targetQuiz;
+        
+        // Reset and start the timer for the new quiz
+        const timerDisplay = document.getElementById(`timer${quizActive.slice(-1)}`);
+        timerDisplay.textContent = formatTime(timerDuration);
+        
+        // Check if the quiz has been taken before
+        if (!isQuizActive[quizActive]) {
+            displayQuiz(quizActive);
+            startTimer(quizActive, timerDuration);
+        }
+    }
+
+    // Function to format time from seconds to MM:SS
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
+    }
+
+    // Function to start the timer
+    function startTimer(quizId, duration) {
+        let timer = duration;
+        isQuizActive[quizId] = true;
+        
+        timers[quizId] = setInterval(() => {
+            const timerDisplay = document.getElementById(`timer${quizId.slice(-1)}`);
+            timerDisplay.textContent = formatTime(timer);
+            
+            if (--timer < 0) {
+                clearInterval(timers[quizId]);
+                correctQuiz(quizId);
+                timerDisplay.textContent = "Time's up!";
+            }
+        }, 1000);
+    }
+
+    // Function to display the quiz questions
+    function displayQuiz(quizId) {
+        const quizContainer = document.getElementById(`quiz-container-${quizId.slice(-1)}`);
+        const quizData = quizzes[quizId.replace('-', '')].questions;
+        
+        quizContainer.innerHTML = ''; // Clear previous content
+
+        quizData.forEach((item, index) => {
+            const questionDiv = document.createElement('div');
+            questionDiv.classList.add('question');
+            
+            const questionHeading = document.createElement('p');
+            questionHeading.classList.add('text-lg', 'font-medium', 'text-gray-900', 'mb-2');
+            questionHeading.textContent = `${index + 1}. ${item.question}`;
+            questionDiv.appendChild(questionHeading);
+
+            item.options.forEach(option => {
+                const label = document.createElement('label');
+                label.classList.add('option');
+                
+                const input = document.createElement('input');
+                input.type = 'radio';
+                input.name = `q${index}`;
+                input.value = option;
+                
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(option));
+                questionDiv.appendChild(label);
+            });
+            
+            quizContainer.appendChild(questionDiv);
+        });
+    }
+
+    // Function to correct the quiz and display results
+    function correctQuiz(quizId) {
+        const quizContainer = document.getElementById(`quiz-container-${quizId.slice(-1)}`);
+        const resultSection = document.getElementById(`results-${quizId.slice(-1)}`);
+        const scoreSpan = document.getElementById(`score-${quizId.slice(-1)}`);
+        const resultDetails = document.getElementById(`result-details-${quizId.slice(-1)}`);
+        
+        const quizData = quizzes[quizId.replace('-', '')].questions;
+        let score = 0;
+        
+        // Disable all radio buttons
+        const radioInputs = quizContainer.querySelectorAll('input[type="radio"]');
+        radioInputs.forEach(input => input.disabled = true);
+        
+        // Remove hover effect
+        const options = quizContainer.querySelectorAll('.option');
+        options.forEach(option => option.classList.add('disabled-input'));
+
+        resultDetails.innerHTML = '';
+        
+        quizData.forEach((item, index) => {
+            const selectedOption = document.querySelector(`input[name="q${index}"]:checked`);
+            
+            const questionDiv = quizContainer.querySelector(`[class*="question"]:nth-child(${index + 1})`);
+            
+            // Highlight correct answer
+            const correctLabel = questionDiv.querySelector(`input[value="${item.answer}"]`).parentNode;
+            correctLabel.classList.add('correct-answer');
+
+            if (selectedOption) {
+                const userAnswer = selectedOption.value;
+                if (userAnswer === item.answer) {
+                    score++;
+                } else {
+                    const wrongLabel = selectedOption.parentNode;
+                    wrongLabel.classList.add('wrong-answer');
+                }
+            }
+        });
+        
+        scoreSpan.textContent = `${score} / ${quizData.length}`;
+        resultSection.classList.remove('hidden');
+        
+        // Stop the timer if it was a manual submission
+        if (isQuizActive[quizId]) {
+            clearInterval(timers[quizId]);
+            isQuizActive[quizId] = false;
+        }
+    }
+
+    // Event listeners for navigation buttons
+    document.getElementById('nav-quiz1').addEventListener('click', () => navigate('quiz-1'));
+    document.getElementById('nav-quiz2').addEventListener('click', () => navigate('quiz-2'));
+    document.getElementById('nav-quiz3').addEventListener('click', () => navigate('quiz-3'));
+
+    // Initialize the first quiz
+    document.addEventListener('DOMContentLoaded', () => {
+        navigate('quiz-1');
+    });
+
+</script>
+
+</body>
+</html>
