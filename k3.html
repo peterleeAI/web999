@@ -1,0 +1,671 @@
+
+<!doctype html>
+<html lang="en">
+<title>CyberLearn - Security+ Quizzes & Kali Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --kali-purple: #5574f7;
+            --kali-dark: #0f0f23;
+            --kali-darker: #0a0a16;
+            --kali-light: #1a1a2e;
+            --kali-accent: #00ff9d;
+            --text-light: #e0e0e0;
+            --text-muted: #888;
+            --danger: #ff4757;
+            --success: #2ed573;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--kali-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--kali-darker);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--kali-accent);
+        }
+
+        .logo i {
+            color: var(--kali-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--kali-accent);
+        }
+
+        .nav-links a.active {
+            color: var(--kali-purple);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--kali-purple);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--kali-darker) 0%, var(--kali-light) 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(85, 116, 247, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--kali-purple), var(--kali-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--kali-purple);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #3a5cf5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(85, 116, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--kali-accent);
+            border: 1px solid var(--kali-accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 255, 157, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--kali-accent);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Quiz Cards */
+        .quiz-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .quiz-card {
+            background-color: var(--kali-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-card-header {
+            background: linear-gradient(135deg, var(--kali-purple), #3a5cf5);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .quiz-card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .quiz-card-body {
+            padding: 25px;
+        }
+
+        .quiz-card-body p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .quiz-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Lab Cards */
+        .lab-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .lab-card {
+            background-color: var(--kali-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .lab-card-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--kali-purple), #3a5cf5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .lab-card-body {
+            padding: 25px;
+        }
+
+        .lab-card-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--kali-accent);
+        }
+
+        .lab-card-body p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .lab-difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-beginner {
+            background-color: rgba(46, 213, 115, 0.2);
+            color: var(--success);
+        }
+
+        .difficulty-intermediate {
+            background-color: rgba(255, 165, 0, 0.2);
+            color: orange;
+        }
+
+        .difficulty-advanced {
+            background-color: rgba(255, 71, 87, 0.2);
+            color: var(--danger);
+        }
+
+        /* Quiz Interface */
+        .quiz-interface {
+            display: none;
+            background-color: var(--kali-light);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timer {
+            background-color: var(--kali-darker);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--kali-accent);
+        }
+
+        .timer.warning {
+            color: var(--danger);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .question-counter {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background-color: var(--kali-darker);
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .option:hover {
+            background-color: rgba(85, 116, 247, 0.1);
+        }
+
+        .option.selected {
+            background-color: rgba(85, 116, 247, 0.2);
+            border-left: 4px solid var(--kali-purple);
+        }
+
+        .option.correct {
+            background-color: rgba(46, 213, 115, 0.2);
+            border-left: 4px solid var(--success);
+        }
+
+        .option.incorrect {
+            background-color: rgba(255, 71, 87, 0.2);
+            border-left: 4px solid var(--danger);
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .quiz-results {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--kali-accent);
+        }
+
+        .result-message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--kali-darker);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--kali-accent);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--kali-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--kali-purple);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--kali-darker);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+
+            .quiz-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Port Number Quiz</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width:900px; margin:30px auto; padding:20px; line-height:1.45; }
+  h1 { font-size:1.8rem; margin-bottom:0.2rem; }
+  .question { border:1px solid #ddd; padding:14px; border-radius:8px; margin:12px 0; background:#fafafa; }
+  .q-title { font-weight:600; margin-bottom:8px; }
+  .options { display:flex; flex-direction:column; gap:8px; }
+  button.opt { text-align:left; padding:10px 12px; border-radius:6px; border:1px solid #ccc; background:white; cursor:pointer; }
+  button.opt:disabled { opacity:0.6; cursor:default; }
+  .feedback { margin-top:8px; font-weight:700; min-height:1.2em; }
+  .correct { color: #0b7038; } /* green */
+  .incorrect { color: #c62828; } /* red */
+  #scoreBox { margin-top:18px; padding:14px; border-radius:8px; border:1px solid #ccc; background:#f3f7ff; display:none; }
+  #restart { margin-top:10px; }
+  footer { margin-top:28px; font-size:0.9rem; color:#555; }
+</style>
+</head>
+<body>
+  <h1>Port Number Quiz</h1>
+  <p>15 questions — click an answer to auto-check. A message will appear below each question. Your final score appears at the end.</p>
+
+  <div id="quiz"></div>
+
+  <div id="scoreBox">
+    <div id="scoreText"></div>
+    <button id="restart">Restart Quiz</button>
+  </div>
+
+  <footer>Generated for you — open this file in any modern browser.</footer>
+
+<script>
+const questions = [
+  { q: "Which port number is commonly used by FTP (data transfer)?", correct: "20", opts: ["21","20","22","23"] },
+  { q: "Which port number is commonly used by FTP (control / command)?", correct: "21", opts: ["20","21","25","80"] },
+  { q: "Which port number is commonly used by SSH?", correct: "22", opts: ["22","23","110","143"] },
+  { q: "Which port number is commonly used by Telnet?", correct: "23", opts: ["23","53","67","68"] },
+  { q: "Which port number is commonly used by SMTP (sending email)?", correct: "25", opts: ["25","110","143","443"] },
+  { q: "Which port number is commonly used by DNS (domain name service)?", correct: "53", opts: ["53","67","20","21"] },
+  { q: "Which port number is commonly used by DHCP (server)?", correct: "67", opts: ["67","68","123","161"] },
+  { q: "Which port number is commonly used by DHCP (client)?", correct: "68", opts: ["68","67","53","25"] },
+  { q: "Which port number is commonly used by HTTP (web traffic)?", correct: "80", opts: ["80","443","8080","21"] },
+  { q: "Which port number is commonly used by POP3 (email retrieval)?", correct: "110", opts: ["110","143","21","22"] },
+  { q: "Which port number is commonly used by NNTP (news)?", correct: "119", opts: ["119","110","25","23"] },
+  { q: "Which port number is commonly used by NTP (network time)?", correct: "123", opts: ["123","161","443","80"] },
+  { q: "Which port number is commonly used by IMAP (email retrieval)?", correct: "143", opts: ["143","110","25","53"] },
+  { q: "Which port number is commonly used by SNMP?", correct: "161", opts: ["161","162","53","67"] },
+  { q: "Which port number is commonly used by HTTPS (secure web traffic)?", correct: "443", opts: ["80","443","22","25"] }
+];
+
+// Shuffle options for each question to randomize positions
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+const quizDiv = document.getElementById('quiz');
+let score = 0;
+let answeredCount = 0;
+
+function buildQuiz() {
+  quizDiv.innerHTML = '';
+  score = 0;
+  answeredCount = 0;
+  document.getElementById('scoreBox').style.display = 'none';
+
+  questions.forEach((item, idx) => {
+    const container = document.createElement('div');
+    container.className = 'question';
+    const title = document.createElement('div');
+    title.className = 'q-title';
+    title.textContent = (idx+1) + '. ' + item.q;
+    container.appendChild(title);
+
+    const optsDiv = document.createElement('div');
+    optsDiv.className = 'options';
+
+    // Copy and shuffle
+    const choices = shuffle(item.opts.slice());
+
+    choices.forEach(choice => {
+      const btn = document.createElement('button');
+      btn.className = 'opt';
+      btn.type = 'button';
+      btn.textContent = choice;
+      btn.addEventListener('click', () => handleAnswer(btn, choice, item.correct, feedbackDiv, optsDiv));
+      optsDiv.appendChild(btn);
+    });
+
+    container.appendChild(optsDiv);
+
+    const feedbackDiv = document.createElement('div');
+    feedbackDiv.className = 'feedback';
+    container.appendChild(feedbackDiv);
+
+    quizDiv.appendChild(container);
+  });
+}
+
+function handleAnswer(button, selected, correct, feedbackDiv, optsDiv) {
+  // If already answered, ignore
+  if (feedbackDiv.dataset.answered === 'true') return;
+
+  // Disable all option buttons for this question
+  Array.from(optsDiv.querySelectorAll('button')).forEach(b => b.disabled = true);
+
+  feedbackDiv.dataset.answered = 'true';
+  answeredCount++;
+
+  if (selected === correct) {
+    feedbackDiv.textContent = 'Correct!';
+    feedbackDiv.classList.add('correct');
+    feedbackDiv.classList.remove('incorrect');
+    score++;
+  } else {
+    feedbackDiv.textContent = 'Incorrect!';
+    feedbackDiv.classList.add('incorrect');
+    feedbackDiv.classList.remove('correct');
+  }
+
+  // When all questions answered, show score
+  if (answeredCount === questions.length) {
+    showScore();
+  }
+}
+
+function showScore() {
+  const box = document.getElementById('scoreBox');
+  const text = document.getElementById('scoreText');
+  text.textContent = `You got ${score} out of ${questions.length} correct.`;
+  box.style.display = 'block';
+}
+
+document.getElementById('restart').addEventListener('click', () => {
+  // Rebuild quiz and reshuffle options
+  buildQuiz();
+});
+
+// initial build
+buildQuiz();
+</script>
+</body>
+</html>
