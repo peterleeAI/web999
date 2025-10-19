@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberLearn - Security+ Quizzes & Kali Labs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --kali-purple: #5574f7;
+            --kali-dark: #0f0f23;
+            --kali-darker: #0a0a16;
+            --kali-light: #1a1a2e;
+            --kali-accent: #00ff9d;
+            --text-light: #e0e0e0;
+            --text-muted: #888;
+            --danger: #ff4757;
+            --success: #2ed573;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--kali-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--kali-darker);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--kali-accent);
+        }
+
+        .logo i {
+            color: var(--kali-purple);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--kali-accent);
+        }
+
+        .nav-links a.active {
+            color: var(--kali-purple);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--kali-purple);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--kali-darker) 0%, var(--kali-light) 100%);
+            padding: 80px 0;
+            text-align: center;
+            border-bottom: 1px solid rgba(85, 116, 247, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--kali-purple), var(--kali-accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-muted);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--kali-purple);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #3a5cf5;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(85, 116, 247, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--kali-accent);
+            border: 1px solid var(--kali-accent);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 255, 157, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--kali-accent);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Quiz Cards */
+        .quiz-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .quiz-card {
+            background-color: var(--kali-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .quiz-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .quiz-card-header {
+            background: linear-gradient(135deg, var(--kali-purple), #3a5cf5);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .quiz-card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .quiz-card-body {
+            padding: 25px;
+        }
+
+        .quiz-card-body p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .quiz-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Lab Cards */
+        .lab-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .lab-card {
+            background-color: var(--kali-light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .lab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .lab-card-img {
+            height: 180px;
+            background: linear-gradient(135deg, var(--kali-purple), #3a5cf5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .lab-card-body {
+            padding: 25px;
+        }
+
+        .lab-card-body h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--kali-accent);
+        }
+
+        .lab-card-body p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .lab-difficulty {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-beginner {
+            background-color: rgba(46, 213, 115, 0.2);
+            color: var(--success);
+        }
+
+        .difficulty-intermediate {
+            background-color: rgba(255, 165, 0, 0.2);
+            color: orange;
+        }
+
+        .difficulty-advanced {
+            background-color: rgba(255, 71, 87, 0.2);
+            color: var(--danger);
+        }
+
+        /* Quiz Interface */
+        .quiz-interface {
+            display: none;
+            background-color: var(--kali-light);
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .timer {
+            background-color: var(--kali-darker);
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: var(--kali-accent);
+        }
+
+        .timer.warning {
+            color: var(--danger);
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        .question-counter {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .question {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background-color: var(--kali-darker);
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .option:hover {
+            background-color: rgba(85, 116, 247, 0.1);
+        }
+
+        .option.selected {
+            background-color: rgba(85, 116, 247, 0.2);
+            border-left: 4px solid var(--kali-purple);
+        }
+
+        .option.correct {
+            background-color: rgba(46, 213, 115, 0.2);
+            border-left: 4px solid var(--success);
+        }
+
+        .option.incorrect {
+            background-color: rgba(255, 71, 87, 0.2);
+            border-left: 4px solid var(--danger);
+        }
+
+        .quiz-controls {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .quiz-results {
+            display: none;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .score {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--kali-accent);
+        }
+
+        .result-message {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--kali-darker);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: var(--kali-accent);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--kali-accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--kali-purple);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--kali-darker);
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
+            }
+
+            .quiz-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CyberLearn</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#quizzes">Quizzes</a></li>
+                    <li><a href="#labs">Kali Labs</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Master Cybersecurity with Interactive Quizzes & Labs</h1>
+            <p>Test your Security+ knowledge with timed quizzes and practice with realistic Kali Linux labs in a safe, controlled environment.</p>
+            <div class="cta-buttons">
+                <a href="#quizzes" class="btn btn-primary">Start Quizzing</a>
+                <a href="#labs" class="btn btn-secondary">Explore Labs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quizzes Section -->
+    <section id="quizzes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Security+ Practice Quizzes</h2>
+                <p>Test your knowledge with these timed, auto-correcting quizzes. Each quiz has 20 questions and a 5-minute timer.</p>
+            </div>
+
+            <div class="quiz-cards">
+                <!-- Port Numbers Quiz Card -->
+                <div class="quiz-card">
+                    <div class="quiz-card-header">
+                        <h3>Port Numbers Quiz</h3>
+                        <p>Security+ Focus</p>
+                    </div>
+                    <div class="quiz-card-body">
+                        <p>Test your knowledge of common port numbers and their associated services as required for the Security+ exam.</p>
+                        <div class="quiz-stats">
+                            <span><i class="far fa-question-circle"></i> 20 Questions</span>
+                            <span><i class="far fa-clock"></i> 5 Minutes</span>
+                        </div>
+                        <button class="btn btn-primary start-quiz" data-quiz="port-numbers">Start Quiz</button>
+                    </div>
+                </div>
+
+                <!-- Nmap Commands Quiz Card -->
+                <div class="quiz-card">
+                    <div class="quiz-card-header">
+                        <h3>Nmap Commands Quiz</h3>
+                        <p>Security+ Focus</p>
+                    </div>
+                    <div class="quiz-card-body">
+                        <p>Challenge yourself with questions about Nmap scanning techniques, syntax, and output interpretation.</p>
+                        <div class="quiz-stats">
+                            <span><i class="far fa-question-circle"></i> 20 Questions</span>
+                            <span><i class="far fa-clock"></i> 5 Minutes</span>
+                        </div>
+                        <button class="btn btn-primary start-quiz" data-quiz="nmap-commands">Start Quiz</button>
+                    </div>
+                </div>
+
+                <!-- Security+ General Quiz Card -->
+                <div class="quiz-card">
+                    <div class="quiz-card-header">
+                        <h3>Security+ General Quiz</h3>
+                        <p>Comprehensive Knowledge</p>
+                    </div>
+                    <div class="quiz-card-body">
+                        <p>A comprehensive quiz covering various Security+ topics including threats, attacks, and vulnerabilities.</p>
+                        <div class="quiz-stats">
+                            <span><i class="far fa-question-circle"></i> 20 Questions</span>
+                            <span><i class="far fa-clock"></i> 5 Minutes</span>
+                        </div>
+                        <button class="btn btn-primary start-quiz" data-quiz="security-plus">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Interface (Initially Hidden) -->
+            <div class="quiz-interface" id="quiz-interface">
+                <div class="quiz-header">
+                    <h2 id="quiz-title">Port Numbers Quiz</h2>
+                    <div class="timer" id="timer">05:00</div>
+                    <div class="question-counter" id="question-counter">Question 1 of 20</div>
+                </div>
+                
+                <div class="question" id="question">
+                    Which port is typically used for SSH (Secure Shell)?
+                </div>
+                
+                <div class="options" id="options">
+                    <div class="option" data-value="A">A. Port 21</div>
+                    <div class="option" data-value="B">B. Port 22</div>
+                    <div class="option" data-value="C">C. Port 23</div>
+                    <div class="option" data-value="D">D. Port 25</div>
+                </div>
+                
+                <div class="quiz-controls">
+                    <button class="btn btn-secondary" id="prev-btn" disabled>Previous</button>
+                    <button class="btn btn-primary" id="next-btn">Next</button>
+                </div>
+            </div>
+
+            <!-- Quiz Results (Initially Hidden) -->
+            <div class="quiz-results" id="quiz-results">
+                <h2>Quiz Complete!</h2>
+                <div class="score" id="final-score">18/20</div>
+                <p class="result-message" id="result-message">Excellent work! You have a strong understanding of port numbers.</p>
+                <button class="btn btn-primary" id="retry-btn">Try Another Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kali Labs Section -->
+    <section id="labs">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kali Linux Practice Labs</h2>
+                <p>Hands-on cybersecurity labs to practice your skills in a safe, controlled environment.</p>
+            </div>
+
+            <div class="lab-cards">
+                <!-- Lab 1 -->
+                <div class="lab-card">
+                    <div class="lab-card-img">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="lab-card-body">
+                        <span class="lab-difficulty difficulty-beginner">Beginner</span>
+                        <h3>Network Scanning Fundamentals</h3>
+                        <p>Learn how to use Nmap for network discovery and service enumeration.</p>
+                        <button class="btn btn-secondary">Start Lab</button>
+                    </div>
+                </div>
+
+                <!-- Lab 2 -->
+                <div class="lab-card">
+                    <div class="lab-card-img">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="lab-card-body">
+                        <span class="lab-difficulty difficulty-beginner">Beginner</span>
+                        <h3>Password Cracking Techniques</h3>
+                        <p>Practice using John the Ripper and Hashcat to crack password hashes.</p>
+                        <button class="btn btn-secondary">Start Lab</button>
+                    </div>
+                </div>
+
+                <!-- Lab 3 -->
+                <div class="lab-card">
+                    <div class="lab-card-img">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <div class="lab-card-body">
+                        <span class="lab-difficulty difficulty-intermediate">Intermediate</span>
+                        <h3>Web Application Vulnerability Assessment</h3>
+                        <p>Use Burp Suite and OWASP ZAP to find vulnerabilities in web applications.</p>
+                        <button class="btn btn-secondary">Start Lab</button>
+                    </div>
+                </div>
+
+                <!-- Lab 4 -->
+                <div class="lab-card">
+                    <div class="lab-card-img">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <div class="lab-card-body">
+                        <span class="lab-difficulty difficulty-intermediate">Intermediate</span>
+                        <h3>Metasploit Framework Basics</h3>
+                        <p>Learn how to use Metasploit for vulnerability exploitation and post-exploitation.</p>
+                        <button class="btn btn-secondary">Start Lab</button>
+                    </div>
+                </div>
+
+                <!-- Lab 5 -->
+                <div class="lab-card">
+                    <div class="lab-card-img">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <div class="lab-card-body">
+                        <span class="lab-difficulty difficulty-advanced">Advanced</span>
+                        <h3>Wireless Network Penetration Testing</h3>
+                        <p>Practice attacking and securing wireless networks using Aircrack-ng suite.</p>
+                        <button class="btn btn-secondary">Start Lab</button>
+                    </div>
+                </div>
+
+                <!-- Lab 6 -->
+                <div class="lab-card">
+                    <div class="lab-card-img">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="lab-card-body">
+                        <span class="lab-difficulty difficulty-advanced">Advanced</span>
+                        <h3>Social Engineering Toolkit (SET)</h3>
+                        <p>Learn how to use SET for simulated phishing and other social engineering attacks.</p>
+                        <button class="btn btn-secondary">Start Lab</button>
+                    </div>
+                </div>
+
+                <!-- Additional labs would go here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CyberLearn</h3>
+                    <p>Your platform for cybersecurity education and practice.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#quizzes">Quizzes</a></li>
+                        <li><a href="#labs">Kali Labs</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">CompTIA Security+</a></li>
+                        <li><a href="#">Kali Linux Docs</a></li>
+                        <li><a href="#">Cybersecurity News</a></li>
+                        <li><a href="#">Practice Exams</a></li>
+                        <li><a href="#">Study Guides</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 CyberLearn. All rights reserved. This site is for educational purposes only.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.querySelector('.mobile-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Quiz Data (Sample questions - in a real app, this would be more extensive)
+        const quizData = {
+            'port-numbers': {
+                title: 'Port Numbers Quiz',
+                questions: [
+                    {
+                        question: 'Which port is typically used for SSH (Secure Shell)?',
+                        options: ['Port 21', 'Port 22', 'Port 23', 'Port 25'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What port does HTTPS typically use?',
+                        options: ['Port 80', 'Port 443', 'Port 8080', 'Port 21'],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which port is associated with DNS?',
+                        options: ['Port 53', 'Port 67', 'Port 69', 'Port 110'],
+                        correct: 0
+                    },
+                    {
+                        question: 'FTP control commands typically use which port?',
+                        options: ['Port 20', 'Port 21', 'Port 22', 'Port 23'],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which port is used by Telnet?',
+                        options: ['Port 21', 'Port 22', 'Port 23', 'Port 25'],
+                        correct: 2
+                    }
+                    // In a real implementation, there would be 20 questions
+                ]
+            },
+            'nmap-commands': {
+                title: 'Nmap Commands Quiz',
+                questions: [
+                    {
+                        question: 'Which Nmap command performs a TCP SYN scan?',
+                        options: ['nmap -sS', 'nmap -sT', 'nmap -sU', 'nmap -sA'],
+                        correct: 0
+                    },
+                    {
+                        question: 'What does the -O flag do in Nmap?',
+                        options: ['Enables OS detection', 'Scans all ports', 'Performs a ping scan', 'Enables verbose output'],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which Nmap option scans UDP ports?',
+                        options: ['-sU', '-sS', '-sT', '-sN'],
+                        correct: 0
+                    },
+                    {
+                        question: 'How do you specify a port range in Nmap?',
+                        options: ['-p 1-100', '-p 1,100', '-ports 1-100', '-r 1-100'],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which flag enables service version detection in Nmap?',
+                        options: ['-sV', '-V', '-version', '-sv'],
+                        correct: 0
+                    }
+                    // In a real implementation, there would be 20 questions
+                ]
+            },
+            'security-plus': {
+                title: 'Security+ General Quiz',
+                questions: [
+                    {
+                        question: 'What is the primary goal of encryption?',
+                        options: ['To prevent data loss', 'To ensure data confidentiality', 'To improve network speed', 'To authenticate users'],
+                        correct: 1
+                    },
+                    {
+                        question: 'Which of the following is a symmetric encryption algorithm?',
+                        options: ['RSA', 'AES', 'ECC', 'DSA'],
+                        correct: 1
+                    },
+                    {
+                        question: 'What does CIA stand for in cybersecurity?',
+                        options: ['Confidentiality, Integrity, Availability', 'Central Intelligence Agency', 'Cyber Incident Assessment', 'Critical Infrastructure Assurance'],
+                        correct: 0
+                    },
+                    {
+                        question: 'Which type of malware replicates itself across networks?',
+                        options: ['Trojan', 'Virus', 'Worm', 'Ransomware'],
+                        correct: 2
+                    },
+                    {
+                        question: 'What is the purpose of a firewall?',
+                        options: ['To encrypt network traffic', 'To prevent unauthorized access', 'To scan for viruses', 'To authenticate users'],
+                        correct: 1
+                    }
+                    // In a real implementation, there would be 20 questions
+                ]
+            }
+        };
+
+        // Quiz State Variables
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let timerInterval = null;
+        let timeLeft = 300; // 5 minutes in seconds
+
+        // DOM Elements
+        const quizInterface = document.getElementById('quiz-interface');
+        const quizResults = document.getElementById('quiz-results');
+        const quizTitle = document.getElementById('quiz-title');
+        const timerElement = document.getElementById('timer');
+        const questionCounter = document.getElementById('question-counter');
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const prevButton = document.getElementById('prev-btn');
+        const nextButton = document.getElementById('next-btn');
+        const finalScoreElement = document.getElementById('final-score');
+        const resultMessageElement = document.getElementById('result-message');
+        const retryButton = document.getElementById('retry-btn');
+
+        // Start Quiz Function
+        document.querySelectorAll('.start-quiz').forEach(button => {
+            button.addEventListener('click', function() {
+                const quizType = this.getAttribute('data-quiz');
+                startQuiz(quizType);
+            });
+        });
+
+        function startQuiz(quizType) {
+            currentQuiz = quizData[quizType];
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuiz.questions.length).fill(null);
+            timeLeft = 300;
+            
+            // Show quiz interface, hide cards and results
+            document.querySelector('.quiz-cards').style.display = 'none';
+            quizInterface.style.display = 'block';
+            quizResults.style.display = 'none';
+            
+            // Set quiz title
+            quizTitle.textContent = currentQuiz.title;
+            
+            // Start timer
+            startTimer();
+            
+            // Display first question
+            displayQuestion();
+        }
+
+        function startTimer() {
+            // Clear any existing timer
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+            
+            // Update timer display
+            updateTimerDisplay();
+            
+            // Start countdown
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                updateTimerDisplay();
+                
+                if (timeLeft <= 0) {
+                    endQuiz();
+                } else if (timeLeft <= 60) {
+                    timerElement.classList.add('warning');
+                }
+            }, 1000);
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function displayQuestion() {
+            const question = currentQuiz.questions[currentQuestionIndex];
+            
+            // Update question counter
+            questionCounter.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuiz.questions.length}`;
+            
+            // Display question
+            questionElement.textContent = question.question;
+            
+            // Display options
+            optionsElement.innerHTML = '';
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                optionElement.setAttribute('data-value', String.fromCharCode(65 + index));
+                
+                // Mark if this option was previously selected
+                if (userAnswers[currentQuestionIndex] === index) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.addEventListener('click', () => selectOption(index));
+                optionsElement.appendChild(optionElement);
+            });
+            
+            // Update navigation buttons
+            prevButton.disabled = currentQuestionIndex === 0;
+            nextButton.textContent = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'Submit' : 'Next';
+        }
+
+        function selectOption(optionIndex) {
+            // Save user's answer
+            userAnswers[currentQuestionIndex] = optionIndex;
+            
+            // Update UI to show selected option
+            const options = optionsElement.querySelectorAll('.option');
+            options.forEach((option, index) => {
+                option.classList.toggle('selected', index === optionIndex);
+            });
+        }
+
+        // Navigation between questions
+        prevButton.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (userAnswers[currentQuestionIndex] === null) {
+                alert('Please select an answer before proceeding.');
+                return;
+            }
+            
+            if (currentQuestionIndex < currentQuiz.questions.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+            } else {
+                endQuiz();
+            }
+        });
+
+        function endQuiz() {
+            // Clear timer
+            clearInterval(timerInterval);
+            
+            // Calculate score
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer === currentQuiz.questions[index].correct) {
+                    score++;
+                }
+            });
+            
+            // Display results
+            finalScoreElement.textContent = `${score}/${currentQuiz.questions.length}`;
+            
+            // Set result message based on score
+            if (score >= currentQuiz.questions.length * 0.9) {
+                resultMessageElement.textContent = 'Outstanding! You have mastered this topic.';
+            } else if (score >= currentQuiz.questions.length * 0.7) {
+                resultMessageElement.textContent = 'Good job! You have a solid understanding of this topic.';
+            } else if (score >= currentQuiz.questions.length * 0.6) {
+                resultMessageElement.textContent = 'Not bad! Review the material and try again.';
+            } else {
+                resultMessageElement.textContent = 'Keep studying! You\'ll do better next time.';
+            }
+            
+            // Show results, hide quiz interface
+            quizInterface.style.display = 'none';
+            quizResults.style.display = 'block';
+        }
+
+        // Retry button functionality
+        retryButton.addEventListener('click', () => {
+            // Show quiz cards again
+            document.querySelector('.quiz-cards').style.display = 'grid';
+            quizResults.style.display = 'none';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-links').classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
