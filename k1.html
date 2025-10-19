@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Port Numbers Quiz - Security+</title>
+    <!-- Embed the global CSS from index.html here for simplicity -->
+    <style>
+        /* Paste the global CSS from index.html here */
+        /* ... (nav, body, etc.) ... */
+        /* Quiz-specific already in global */
+    </style>
+</head>
+<body>
+    <!-- Nav Bar (same as index) -->
+    <nav>
+        <h1>Security+ Hub</h1>
+        <ul>
+            <li><a href="index.html#labs">Kali Labs</a></li>
+            <li><a href="quiz-port.html">Port Numbers Quiz</a></li>
+            <!-- Adjust links for other quizzes -->
+            <li><a href="quiz-nmap.html">Nmap Quiz</a></li>
+            <li><a href="quiz-general.html">General Quiz</a></li>
+        </ul>
+    </nav>
+
+    <div class="quiz-container">
+        <div class="timer" id="timer">Time: 5:00</div>
+        <form id="quizForm">
+            <!-- Questions will be inserted by JS -->
+        </form>
+        <button type="button" onclick="submitQuiz()" id="submitBtn" style="display:none;">Submit Quiz</button>
+        <div id="results" class="results" style="display:none;"></div>
+    </div>
+
+    <footer><!-- Same as index --></footer>
+
+    <script>
+        // Questions array - REPLACE with specific quiz questions
+        const questions = [
+            // Example for Port Numbers (20 questions)
+            {
+                question: "What port is used for HTTP?",
+                options: ["80", "443", "22", "53"],
+                answer: "80"
+            },
+
+            {
+                question: "What port is used for TELNET?",
+                options: ["23", "443", "22", "53"],
+                answer: "23"
+            },
+            {
+                question: "What port is used for HTTPS?",
+                options: ["80", "443", "21", "25"],
+                answer: "443"
+            },
+            // Add 18 more...
+            // Full list for ports: 21 FTP, 22 SSH, 23 Telnet, 25 SMTP, 53 DNS, 110 POP3, 143 IMAP, 161 SNMP, 389 LDAP, 445 SMB, 993 IMAPS, 995 POP3S, 3389 RDP, etc.
+            // For brevity, assume you expand to 20 similar objects.
+            // Nmap Quiz example:
+            // {question: "What does -sS mean in Nmap?", options: ["SYN scan", "UDP scan", "Ping scan"], answer: "SYN scan"}
+            // General: Broader, e.g., "What is CIA triad?" etc.
+            // Invent 20 per quiz based on Security+ syllabus.
+        ];
+
+        let timeLeft = 300; // 5 minutes
+        let timerId;
+
+        function startTimer() {
+            timerId = setInterval(() => {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                document.getElementById('timer').textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+                timeLeft--;
+                if (timeLeft < 0) {
+                    clearInterval(timerId);
+                    submitQuiz();
+                }
+            }, 1000);
+        }
+
+        function renderQuiz() {
+            const form = document.getElementById('quizForm');
+            questions.forEach((q, index) => {
+                const div = document.createElement('div');
+                div.className = 'question';
+                div.innerHTML = `
+                    <p>${index + 1}. ${q.question}</p>
+                    <div class="options">
+                        ${q.options.map(opt => `<label><input type="radio" name="q${index}" value="${opt}"> ${opt}</label>`).join('')}
+                    </div>
+                `;
+                form.appendChild(div);
+            });
+            document.getElementById('submitBtn').style.display = 'block';
+            startTimer();
+        }
+
+        function submitQuiz() {
+            clearInterval(timerId);
+            let score = 0;
+            questions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                if (selected && selected.value === q.answer) score++;
+            });
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('results').innerHTML = `Score: ${score}/${questions.length} (${Math.round(score/questions.length*100)}%)`;
+            document.getElementById('results').style.display = 'block';
+        }
+
+        // Load quiz on page load
+        window.onload = renderQuiz;
+    </script>
+</body>
+</html>
