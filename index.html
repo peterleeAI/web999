@@ -1,202 +1,997 @@
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <style>
-      .logo {
-        background-image: url("yes3.jpg");
-        display: block;
-        margin: 0 auto;
-        max-width: 100px;
-        height: auto;
-        margin-bottom: 20px;
-      }
-
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #b1d6e9;
-        text-align: center;
-      }
-
-      .section-title {
-        background-color: #87a7b7;
-        color: white;
-        padding: 15px;
-        margin: 30px 0;
-        font-size: 1.5em;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .video-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 20px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-
-      .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .video-wrapper iframe {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border: none;
-        border-radius: 8px;
-      }
-    </style>
-  </head>
-  <body>
-    <img src="./yes3.jpg" alt="logo" class="logo" />
-    <h1>Network Website</h1>
-
-    <div class="section-title">Featured Videos</div>
-    <div class="video-container">
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/dZwbb42pdtg"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/qZB_biPOBwA"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/5j0Zb6x_hOk"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/nvdnQX9UkMY"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/-YqdwQXXw9k"
-          allowfullscreen
-        ></iframe>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CompTIA Security+ SY0-701 Study Platform</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">🔒</div>
+            <h2>Security+ SY0-701</h2>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
+            <p>Loading your cybersecurity learning experience...</p>
+        </div>
     </div>
 
-    <div class="section-title">Additional Content</div>
-    <div class="video-container">
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/E5bSumTAHZE"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/AVXYq8aL47Q"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/1CDxpAzvLKY"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/m5SpaEhKouY"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/A7-LbZaqCnM"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/aC-KIVYewAM"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/qt2-_RnjGh8"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/dFsjB03_9jQ"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/cKCB9mIGf7Y"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/quzvJoUIdh0"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/2733cRPudvI"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/Gt527E3yT6Y"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/IHrGresKu2w"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/4ygaA_y1wvQ"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/SmzTNZwJnIw"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <div class="video-wrapper">
-        <iframe
-          src="https://www.youtube.com/embed/-Q9VUlY8bMg"
-          allowfullscreen
-        ></iframe>
-      </div>
+    <!-- Main App -->
+    <div id="app" class="app">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>Security+ SY0-701</h1>
+                <div class="overall-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="overall-progress"></div>
+                    </div>
+                    <span class="progress-text" id="progress-text">0% Complete</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <div class="nav-item active" data-view="overview">
+                    <div class="nav-icon">🏠</div>
+                    <span>Overview</span>
+                </div>
+                <div class="nav-item" data-view="domain1">
+                    <div class="nav-icon">🔐</div>
+                    <div class="nav-content">
+                        <span>Domain 1</span>
+                        <small>General Security Concepts (12%)</small>
+                    </div>
+                </div>
+                <div class="nav-item" data-view="domain2">
+                    <div class="nav-icon">⚠️</div>
+                    <div class="nav-content">
+                        <span>Domain 2</span>
+                        <small>Threats & Vulnerabilities (22%)</small>
+                    </div>
+                </div>
+                <div class="nav-item" data-view="domain3">
+                    <div class="nav-icon">🏗️</div>
+                    <div class="nav-content">
+                        <span>Domain 3</span>
+                        <small>Security Architecture (18%)</small>
+                    </div>
+                </div>
+                <div class="nav-item" data-view="domain4">
+                    <div class="nav-icon">🛡️</div>
+                    <div class="nav-content">
+                        <span>Domain 4</span>
+                        <small>Security Operations (28%)</small>
+                    </div>
+                </div>
+                <div class="nav-item" data-view="domain5">
+                    <div class="nav-icon">📋</div>
+                    <div class="nav-content">
+                        <span>Domain 5</span>
+                        <small>Security Program Management (20%)</small>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle">☰</button>
+                <h1 id="page-title">CompTIA Security+ SY0-701 Study Platform</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary" id="reset-progress">Reset Progress</button>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content" id="content">
+                <!-- Overview Section -->
+                <section id="overview" class="view active">
+                    <div class="hero-section">
+                        <h1>CompTIA Security+ SY0-701 Certification Study Platform</h1>
+                        <p class="hero-description">
+                            Master cybersecurity fundamentals with our comprehensive study platform covering all 5 exam domains 
+                            with interactive content and practice quizzes.
+                        </p>
+                        <div class="exam-info">
+                            <div class="info-card">
+                                <h3>90 Minutes</h3>
+                                <p>Exam Duration</p>
+                            </div>
+                            <div class="info-card">
+                                <h3>90 Questions</h3>
+                                <p>Multiple Choice & Performance-Based</p>
+                            </div>
+                            <div class="info-card">
+                                <h3>750/900</h3>
+                                <p>Passing Score</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="domains-overview">
+                        <h2>Exam Domains Overview</h2>
+                        <div class="domains-grid">
+                            <div class="domain-card" data-domain="domain1">
+                                <div class="domain-header">
+                                    <span class="domain-number">01</span>
+                                    <h3>General Security Concepts</h3>
+                                </div>
+                                <div class="domain-content">
+                                    <p>Foundational security principles including CIA triad, AAA framework, access control, and zero trust architecture.</p>
+                                    <div class="domain-weight">12% of exam</div>
+                                </div>
+                            </div>
+                            
+                            <div class="domain-card" data-domain="domain2">
+                                <div class="domain-header">
+                                    <span class="domain-number">02</span>
+                                    <h3>Threats, Vulnerabilities & Mitigations</h3>
+                                </div>
+                                <div class="domain-content">
+                                    <p>Understanding threat actors, attack vectors, vulnerability management, and security controls.</p>
+                                    <div class="domain-weight">22% of exam</div>
+                                </div>
+                            </div>
+                            
+                            <div class="domain-card" data-domain="domain3">
+                                <div class="domain-header">
+                                    <span class="domain-number">03</span>
+                                    <h3>Security Architecture</h3>
+                                </div>
+                                <div class="domain-content">
+                                    <p>Secure system design, network architecture, cloud models, and infrastructure security.</p>
+                                    <div class="domain-weight">18% of exam</div>
+                                </div>
+                            </div>
+                            
+                            <div class="domain-card" data-domain="domain4">
+                                <div class="domain-header">
+                                    <span class="domain-number">04</span>
+                                    <h3>Security Operations</h3>
+                                </div>
+                                <div class="domain-content">
+                                    <p>Security monitoring, incident response, vulnerability management, and operational security.</p>
+                                    <div class="domain-weight">28% of exam</div>
+                                </div>
+                            </div>
+                            
+                            <div class="domain-card" data-domain="domain5">
+                                <div class="domain-header">
+                                    <span class="domain-number">05</span>
+                                    <h3>Security Program Management</h3>
+                                </div>
+                                <div class="domain-content">
+                                    <p>Governance, risk management, compliance, policies, and security program oversight.</p>
+                                    <div class="domain-weight">20% of exam</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Domain 1 Content -->
+                <section id="domain1" class="view">
+                    <div class="domain-header-section">
+                        <h1>Domain 1: General Security Concepts</h1>
+                        <div class="domain-stats">
+                            <span class="weight">12% of exam</span>
+                            <span class="questions">~11 questions</span>
+                        </div>
+                    </div>
+
+                    <div class="concept-cards">
+                        <div class="concept-card">
+                            <h3>CIA Triad (Confidentiality, Integrity, Availability)</h3>
+                            <p>The foundation of information security, representing the three core objectives of security programs.</p>
+                            <div class="concept-details">
+                                <h4>Confidentiality:</h4>
+                                <p>Ensuring information is accessible only to authorized users. Methods include encryption, access controls, and data classification.</p>
+                                <h4>Integrity:</h4>
+                                <p>Ensuring information remains accurate and unaltered. Methods include hashing, digital signatures, and integrity checks.</p>
+                                <h4>Availability:</h4>
+                                <p>Ensuring systems and data are accessible when needed. Methods include redundancy, backups, and disaster recovery.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>AAA Framework (Authentication, Authorization, Accounting)</h3>
+                            <p>A comprehensive approach to managing user access and tracking activities.</p>
+                            <div class="concept-details">
+                                <h4>Authentication:</h4>
+                                <p>Verifying identity through something you know (password), have (token), or are (biometric).</p>
+                                <h4>Authorization:</h4>
+                                <p>Determining what resources a user can access after authentication.</p>
+                                <h4>Accounting:</h4>
+                                <p>Tracking and logging user activities and resource usage for audit purposes.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Access Control Models</h3>
+                            <p>Different approaches to controlling who can access what resources.</p>
+                            <div class="concept-details">
+                                <h4>DAC (Discretionary Access Control):</h4>
+                                <p>Resource owners determine access rights. Common in file systems.</p>
+                                <h4>MAC (Mandatory Access Control):</h4>
+                                <p>System enforces access policies based on security clearance levels.</p>
+                                <h4>RBAC (Role-Based Access Control):</h4>
+                                <p>Access based on user's role within an organization.</p>
+                                <h4>ABAC (Attribute-Based Access Control):</h4>
+                                <p>Access decisions based on attributes of users, resources, and environment.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Zero Trust Architecture</h3>
+                            <p>A security model that assumes no user or system should be trusted by default.</p>
+                            <div class="concept-details">
+                                <h4>Key Principles:</h4>
+                                <ul>
+                                    <li>Never trust, always verify</li>
+                                    <li>Least privilege access</li>
+                                    <li>Assume breach</li>
+                                    <li>Verify explicitly</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Cryptographic Fundamentals</h3>
+                            <p>Basic concepts of encryption, hashing, and digital signatures.</p>
+                            <div class="concept-details">
+                                <h4>Encryption:</h4>
+                                <p>Converting plaintext to ciphertext. Symmetric (AES) vs Asymmetric (RSA).</p>
+                                <h4>Hashing:</h4>
+                                <p>One-way function creating fixed-size output (SHA-256, MD5).</p>
+                                <h4>Digital Signatures:</h4>
+                                <p>Ensuring authenticity and integrity of digital messages.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h2>Practice Quizzes</h2>
+                        <div class="quiz-cards">
+                            <div class="quiz-card" data-quiz="d1q1">
+                                <h3>Domain 1 Quiz 1: Security Fundamentals</h3>
+                                <p>Test your understanding of CIA triad, AAA framework, and basic security concepts.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐ Beginner</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d1q1">Start Quiz</button>
+                            </div>
+                            <div class="quiz-card" data-quiz="d1q2">
+                                <h3>Domain 1 Quiz 2: Access Control & Encryption</h3>
+                                <p>Focus on access control models, zero trust, and cryptographic concepts.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐ Intermediate</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d1q2">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Domain 2 Content -->
+                <section id="domain2" class="view">
+                    <div class="domain-header-section">
+                        <h1>Domain 2: Threats, Vulnerabilities, and Mitigations</h1>
+                        <div class="domain-stats">
+                            <span class="weight">22% of exam</span>
+                            <span class="questions">~20 questions</span>
+                        </div>
+                    </div>
+
+                    <div class="concept-cards">
+                        <div class="concept-card">
+                            <h3>Threat Actors and Attack Vectors</h3>
+                            <p>Understanding who attacks systems and how they gain access.</p>
+                            <div class="concept-details">
+                                <h4>Threat Actors:</h4>
+                                <ul>
+                                    <li>Nation-states (APT groups)</li>
+                                    <li>Script kiddies</li>
+                                    <li>Insider threats</li>
+                                    <li>Competitors</li>
+                                    <li>Cybercriminal organizations</li>
+                                </ul>
+                                <h4>Attack Vectors:</h4>
+                                <ul>
+                                    <li>Email (phishing)</li>
+                                    <li>Web applications</li>
+                                    <li>Network vulnerabilities</li>
+                                    <li>Physical access</li>
+                                    <li>Social engineering</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Malware Types and Characteristics</h3>
+                            <p>Various types of malicious software and their attack methods.</p>
+                            <div class="concept-details">
+                                <h4>Virus:</h4>
+                                <p>Self-replicating code that spreads through host programs.</p>
+                                <h4>Worm:</h4>
+                                <p>Self-propagating malware that spreads across networks.</p>
+                                <h4>Trojan:</h4>
+                                <p>Malware disguised as legitimate software.</p>
+                                <h4>Ransomware:</h4>
+                                <p>Encrypts files and demands payment for decryption.</p>
+                                <h4>Spyware:</h4>
+                                <p>Secretly monitors user activities.</p>
+                                <h4>Adware:</h4>
+                                <p>Displays unwanted advertisements.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Social Engineering Attacks</h3>
+                            <p>Psychological manipulation to trick users into revealing sensitive information.</p>
+                            <div class="concept-details">
+                                <h4>Phishing:</h4>
+                                <p>Fraudulent emails appearing to be from legitimate sources.</p>
+                                <h4>Spear Phishing:</h4>
+                                <p>Targeted phishing attacks against specific individuals.</p>
+                                <h4>Whaling:</h4>
+                                <p>Phishing attacks targeting high-profile individuals.</p>
+                                <h4>Pretexting:</h4>
+                                <p>Creating a fabricated scenario to obtain information.</p>
+                                <h4>Baiting:</h4>
+                                <p>Offering something enticing to lure victims.</p>
+                                <h4>Tailgating:</h4>
+                                <p>Following someone through secure areas.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Vulnerability Management</h3>
+                            <p>Systematic approach to identifying, prioritizing, and mitigating vulnerabilities.</p>
+                            <div class="concept-details">
+                                <h4>Discovery:</h4>
+                                <ul>
+                                    <li>Vulnerability scanning</li>
+                                    <li>Security assessments</li>
+                                    <li>Penetration testing</li>
+                                </ul>
+                                <h4>Assessment:</h4>
+                                <ul>
+                                    <li>Risk scoring (CVSS)</li>
+                                    <li>Business impact analysis</li>
+                                    <li>Asset prioritization</li>
+                                </ul>
+                                <h4>Remediation:</h4>
+                                <ul>
+                                    <li>Patching</li>
+                                    <li>Configuration changes</li>
+                                    <li>Compensating controls</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Security Controls and Mitigations</h3>
+                            <p>Measures to protect against threats and vulnerabilities.</p>
+                            <div class="concept-details">
+                                <h4>Preventive Controls:</h4>
+                                <p>Firewalls, antivirus, access controls, encryption</p>
+                                <h4>Detective Controls:</h4>
+                                <p>IDS/IPS, SIEM, log monitoring, honeypots</p>
+                                <h4>Corrective Controls:</h4>
+                                <p>Backup systems, incident response procedures</p>
+                                <h4>Deterrent Controls:</h4>
+                                <p>Policies, awareness training, security guards</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h2>Practice Quizzes</h2>
+                        <div class="quiz-cards">
+                            <div class="quiz-card" data-quiz="d2q1">
+                                <h3>Domain 2 Quiz 1: Threats and Attack Methods</h3>
+                                <p>Test your knowledge of threat actors, malware, and attack vectors.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐ Intermediate</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d2q1">Start Quiz</button>
+                            </div>
+                            <div class="quiz-card" data-quiz="d2q2">
+                                <h3>Domain 2 Quiz 2: Vulnerability Management</h3>
+                                <p>Focus on vulnerability assessment, security controls, and mitigation strategies.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d2q2">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Domain 3 Content -->
+                <section id="domain3" class="view">
+                    <div class="domain-header-section">
+                        <h1>Domain 3: Security Architecture</h1>
+                        <div class="domain-stats">
+                            <span class="weight">18% of exam</span>
+                            <span class="questions">~16 questions</span>
+                        </div>
+                    </div>
+
+                    <div class="concept-cards">
+                        <div class="concept-card">
+                            <h3>Secure Network Architecture</h3>
+                            <p>Designing networks with security as a fundamental component.</p>
+                            <div class="concept-details">
+                                <h4>Network Segmentation:</h4>
+                                <ul>
+                                    <li>VLANs (Virtual LANs)</li>
+                                    <li>DMZ (Demilitarized Zone)</li>
+                                    <li>Air gaps</li>
+                                    <li>Microsegmentation</li>
+                                </ul>
+                                <h4>Network Security Components:</h4>
+                                <ul>
+                                    <li>Firewalls (Next-Generation)</li>
+                                    <li>Network Access Control (NAC)</li>
+                                    <li>Intrusion Detection/Prevention</li>
+                                    <li>Network monitoring</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Cloud Security Models</h3>
+                            <p>Understanding security responsibilities in different cloud deployment models.</p>
+                            <div class="concept-details">
+                                <h4>Deployment Models:</h4>
+                                <ul>
+                                    <li>Public cloud (AWS, Azure, GCP)</li>
+                                    <li>Private cloud</li>
+                                    <li>Hybrid cloud</li>
+                                    <li>Multi-cloud</li>
+                                </ul>
+                                <h4>Service Models:</h4>
+                                <ul>
+                                    <li>IaaS (Infrastructure as a Service)</li>
+                                    <li>PaaS (Platform as a Service)</li>
+                                    <li>SaaS (Software as a Service)</li>
+                                </ul>
+                                <h4>Shared Responsibility Model:</h4>
+                                <p>Cloud provider vs customer security responsibilities vary by service model.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Secure System Design Principles</h3>
+                            <p>Fundamental principles for building secure systems.</p>
+                            <div class="concept-details">
+                                <h4>Defense in Depth:</h4>
+                                <p>Multiple layers of security controls throughout the system.</p>
+                                <h4>Fail Secure:</h4>
+                                <p>Systems should fail in a secure state rather than an open state.</p>
+                                <h4>Least Privilege:</h4>
+                                <p>Users and processes should have minimum necessary access.</p>
+                                <h4>Separation of Duties:</h4>
+                                <p>Critical tasks should require multiple people to complete.</p>
+                                <h4>Economy of Mechanism:</h4>
+                                <p>Security mechanisms should be as simple as possible.</p>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Industrial Control Systems (ICS)</h3>
+                            <p>Security considerations for industrial and critical infrastructure systems.</p>
+                            <div class="concept-details">
+                                <h4>ICS Components:</h4>
+                                <ul>
+                                    <li>SCADA systems</li>
+                                    <li>PLC (Programmable Logic Controllers)</li>
+                                    <li>HMI (Human Machine Interface)</li>
+                                    <li>Field devices</li>
+                                </ul>
+                                <h4>ICS Security Challenges:</h4>
+                                <ul>
+                                    <li>Legacy systems</li>
+                                    <li>Safety considerations</li>
+                                    <li>Real-time requirements</li>
+                                    <li>Network connectivity</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Secure Protocols and Standards</h3>
+                            <p>Understanding security protocols for various network services.</p>
+                            <div class="concept-details">
+                                <h4>Network Protocols:</h4>
+                                <ul>
+                                    <li>IPSec (VPN security)</li>
+                                    <li>TLS/SSL (web security)</li>
+                                    <li>SSH (secure shell)</li>
+                                    <li>S/MIME (email security)</li>
+                                </ul>
+                                <h4>Authentication Protocols:</h4>
+                                <ul>
+                                    <li>Kerberos</li>
+                                    <li>SAML</li>
+                                    <li>OAuth 2.0</li>
+                                    <li>RADIUS/TACACS+</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h2>Practice Quizzes</h2>
+                        <div class="quiz-cards">
+                            <div class="quiz-card" data-quiz="d3q1">
+                                <h3>Domain 3 Quiz 1: Network Architecture</h3>
+                                <p>Test your knowledge of network security, segmentation, and secure design principles.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d3q1">Start Quiz</button>
+                            </div>
+                            <div class="quiz-card" data-quiz="d3q2">
+                                <h3>Domain 3 Quiz 2: Cloud & ICS Security</h3>
+                                <p>Focus on cloud security models, shared responsibility, and industrial control systems.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d3q2">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Domain 4 Content -->
+                <section id="domain4" class="view">
+                    <div class="domain-header-section">
+                        <h1>Domain 4: Security Operations</h1>
+                        <div class="domain-stats">
+                            <span class="weight">28% of exam</span>
+                            <span class="questions">~25 questions</span>
+                        </div>
+                    </div>
+
+                    <div class="concept-cards">
+                        <div class="concept-card">
+                            <h3>Security Monitoring and SIEM</h3>
+                            <p>Continuous monitoring and correlation of security events for threat detection.</p>
+                            <div class="concept-details">
+                                <h4>SIEM Components:</h4>
+                                <ul>
+                                    <li>Log collection and aggregation</li>
+                                    <li>Event correlation and analysis</li>
+                                    <li>Alert generation and management</li>
+                                    <li>Compliance reporting</li>
+                                </ul>
+                                <h4>Log Sources:</h4>
+                                <ul>
+                                    <li>Firewalls and network devices</li>
+                                    <li>Operating systems</li>
+                                    <li>Applications</li>
+                                    <li>Databases</li>
+                                    <li>Authentication systems</li>
+                                </ul>
+                                <h4>Security Analytics:</h4>
+                                <ul>
+                                    <li>User and Entity Behavior Analytics (UEBA)</li>
+                                    <li>Network traffic analysis</li>
+                                    <li>Endpoint detection and response (EDR)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Incident Response</h3>
+                            <p>Structured approach to handling and managing security incidents.</p>
+                            <div class="concept-details">
+                                <h4>Incident Response Lifecycle:</h4>
+                                <ul>
+                                    <li>Preparation</li>
+                                    <li>Detection and Analysis</li>
+                                    <li>Containment, Eradication, and Recovery</li>
+                                    <li>Post-Incident Activity</li>
+                                </ul>
+                                <h4>IR Team Structure:</h4>
+                                <ul>
+                                    <li>CSIRT (Computer Security Incident Response Team)</li>
+                                    <li>Roles and responsibilities</li>
+                                    <li>Communication plans</li>
+                                </ul>
+                                <h4>Evidence Handling:</h4>
+                                <ul>
+                                    <li>Chain of custody</li>
+                                    <li>Digital forensics</li>
+                                    <li>Legal considerations</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Vulnerability Management</h3>
+                            <p>Systematic process for identifying, assessing, and remediating vulnerabilities.</p>
+                            <div class="concept-details">
+                                <h4>Vulnerability Assessment:</h4>
+                                <ul>
+                                    <li>Authenticated vs unauthenticated scans</li>
+                                    <li>Credentialed assessments</li>
+                                    <li>Web application scanning</li>
+                                    <li>API security testing</li>
+                                </ul>
+                                <h4>Remediation Strategies:</h4>
+                                <ul>
+                                    <li>Patch management</li>
+                                    <li>Configuration hardening</li>
+                                    <li>Compensating controls</li>
+                                    <li>Risk acceptance</li>
+                                </ul>
+                                <h4>Vulnerability Prioritization:</h4>
+                                <ul>
+                                    <li>CVSS scoring</li>
+                                    <li>Asset criticality</li>
+                                    <li>Threat intelligence</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Patch Management</h3>
+                            <p>Managing security updates and patches to maintain system security.</p>
+                            <div class="concept-details">
+                                <h4>Patch Management Process:</h4>
+                                <ul>
+                                    <li>Identification and prioritization</li>
+                                    <li>Testing in controlled environment</li>
+                                    <li>Deployment planning</li>
+                                    <li>Verification and monitoring</li>
+                                </ul>
+                                <h4>Patch Strategies:</h4>
+                                <ul>
+                                    <li>Emergency patching</li>
+                                    <li>Scheduled maintenance windows</li>
+                                    <li>Phased rollouts</li>
+                                    <li>Automated patching</li>
+                                </ul>
+                                <h4>Considerations:</h4>
+                                <ul>
+                                    <li>System availability</li>
+                                    <li>Compatibility testing</li>
+                                    <li>Rollback procedures</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Change Management</h3>
+                            <p>Structured approach to managing changes in IT systems to minimize risk.</p>
+                            <div class="concept-details">
+                                <h4>Change Control Process:</h4>
+                                <ul>
+                                    <li>Change request</li>
+                                    <li>Impact assessment</li>
+                                    <li>Approval workflow</li>
+                                    <li>Implementation</li>
+                                    <li>Verification and documentation</li>
+                                </ul>
+                                <h4>Change Types:</h4>
+                                <ul>
+                                    <li>Emergency changes</li>
+                                    <li>Standard changes</li>
+                                    <li>Normal changes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h2>Practice Quizzes</h2>
+                        <div class="quiz-cards">
+                            <div class="quiz-card" data-quiz="d4q1">
+                                <h3>Domain 4 Quiz 1: Monitoring and SIEM</h3>
+                                <p>Test your knowledge of security monitoring, log analysis, and SIEM operations.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d4q1">Start Quiz</button>
+                            </div>
+                            <div class="quiz-card" data-quiz="d4q2">
+                                <h3>Domain 4 Quiz 2: Incident Response & Operations</h3>
+                                <p>Focus on incident response procedures, vulnerability management, and operational security.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d4q2">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Domain 5 Content -->
+                <section id="domain5" class="view">
+                    <div class="domain-header-section">
+                        <h1>Domain 5: Security Program Management and Oversight</h1>
+                        <div class="domain-stats">
+                            <span class="weight">20% of exam</span>
+                            <span class="questions">~18 questions</span>
+                        </div>
+                    </div>
+
+                    <div class="concept-cards">
+                        <div class="concept-card">
+                            <h3>Security Governance</h3>
+                            <p>Framework for establishing and maintaining security policies and procedures.</p>
+                            <div class="concept-details">
+                                <h4>Governance Structure:</h4>
+                                <ul>
+                                    <li>CISO (Chief Information Security Officer)</li>
+                                    <li>Security steering committee</li>
+                                    <li>Risk management committee</li>
+                                    <li>Security awareness team</li>
+                                </ul>
+                                <h4>Policy Framework:</h4>
+                                <ul>
+                                    <li>Enterprise security policy</li>
+                                    <li>Issue-specific policies</li>
+                                    <li>System-specific policies</li>
+                                    <li>Procedures and guidelines</li>
+                                </ul>
+                                <h4>Standards and Frameworks:</h4>
+                                <ul>
+                                    <li>ISO 27001/27002</li>
+                                    <li>NIST Cybersecurity Framework</li>
+                                    <li>COSO</li>
+                                    <li>CobIT</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Risk Management</h3>
+                            <p>Systematic approach to identifying, assessing, and mitigating security risks.</p>
+                            <div class="concept-details">
+                                <h4>Risk Assessment Process:</h4>
+                                <ul>
+                                    <li>Asset identification and valuation</li>
+                                    <li>Threat modeling</li>
+                                    <li>Vulnerability assessment</li>
+                                    <li>Impact analysis</li>
+                                    <li>Risk calculation</li>
+                                </ul>
+                                <h4>Risk Response Strategies:</h4>
+                                <ul>
+                                    <li>Risk mitigation</li>
+                                    <li>Risk acceptance</li>
+                                    <li>Risk transference</li>
+                                    <li>Risk avoidance</li>
+                                </ul>
+                                <h4>Risk Frameworks:</h4>
+                                <ul>
+                                    <li>FAIR (Factor Analysis of Information Risk)</li>
+                                    <li>STRIDE</li>
+                                    <li>PASTA</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Security Compliance</h3>
+                            <p>Ensuring adherence to legal, regulatory, and contractual security requirements.</p>
+                            <div class="concept-details">
+                                <h4>Regulatory Frameworks:</h4>
+                                <ul>
+                                    <li>GDPR (General Data Protection Regulation)</li>
+                                    <li>HIPAA (Health Insurance Portability and Accountability Act)</li>
+                                    <li>PCI DSS (Payment Card Industry Data Security Standard)</li>
+                                    <li>SOX (Sarbanes-Oxley Act)</li>
+                                </ul>
+                                <h4>Compliance Monitoring:</h4>
+                                <ul>
+                                    <li>Internal audits</li>
+                                    <li>External audits</li>
+                                    <li>Continuous monitoring</li>
+                                    <li>Remediation tracking</li>
+                                </ul>
+                                <h4>Privacy Considerations:</h4>
+                                <ul>
+                                    <li>Data classification</li>
+                                    <li>Consent management</li>
+                                    <li>Data retention policies</li>
+                                    <li>Right to be forgotten</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Security Awareness and Training</h3>
+                            <p>Educating users about security risks and best practices.</p>
+                            <div class="concept-details">
+                                <h4>Training Programs:</h4>
+                                <ul>
+                                    <li>Security awareness training</li>
+                                    <li>Phishing simulation</li>
+                                    <li>Role-based training</li>
+                                    <li>Executive briefings</li>
+                                </ul>
+                                <h4>Training Content:</h4>
+                                <ul>
+                                    <li>Password security</li>
+                                    <li>Social engineering awareness</li>
+                                    <li>Data handling procedures</li>
+                                    <li>Incident reporting</li>
+                                </ul>
+                                <h4>Metrics and Effectiveness:</h4>
+                                <ul>
+                                    <li>Training completion rates</li>
+                                    <li>Phishing click rates</li>
+                                    <li>Security incident trends</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="concept-card">
+                            <h3>Third-Party Risk Management</h3>
+                            <p>Managing security risks associated with external vendors and partners.</p>
+                            <div class="concept-details">
+                                <h4>Vendor Assessment:</h4>
+                                <ul>
+                                    <li>Security questionnaires</li>
+                                    <li>Penetration testing requirements</li>
+                                    <li>Security certifications</li>
+                                    <li>Financial stability assessment</li>
+                                </ul>
+                                <h4>Contractual Requirements:</h4>
+                                <ul>
+                                    <li>Service level agreements (SLAs)</li>
+                                    <li>Data protection clauses</li>
+                                    <li>Breach notification requirements</li>
+                                    <li>Audit rights</li>
+                                </ul>
+                                <h4>Ongoing Monitoring:</h4>
+                                <ul>
+                                    <li>Performance monitoring</li>
+                                    <li>Security incident reporting</li>
+                                    <li>Periodic reassessment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="quiz-section">
+                        <h2>Practice Quizzes</h2>
+                        <div class="quiz-cards">
+                            <div class="quiz-card" data-quiz="d5q1">
+                                <h3>Domain 5 Quiz 1: Governance and Risk Management</h3>
+                                <p>Test your knowledge of security governance, risk assessment, and compliance frameworks.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d5q1">Start Quiz</button>
+                            </div>
+                            <div class="quiz-card" data-quiz="d5q2">
+                                <h3>Domain 5 Quiz 2: Compliance and Training</h3>
+                                <p>Focus on regulatory compliance, security awareness, and third-party risk management.</p>
+                                <div class="quiz-meta">
+                                    <span>26 Questions</span>
+                                    <span>⭐⭐⭐ Advanced</span>
+                                </div>
+                                <button class="btn-primary start-quiz" data-quiz="d5q2">Start Quiz</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Quiz Modal -->
+                <div id="quiz-modal" class="quiz-modal">
+                    <div class="quiz-content">
+                        <div class="quiz-header">
+                            <h2 id="quiz-title">Security+ Quiz</h2>
+                            <div class="quiz-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="quiz-progress"></div>
+                                </div>
+                                <span id="quiz-progress-text">Question 1 of 26</span>
+                            </div>
+                            <button class="quiz-close" id="quiz-close">✕</button>
+                        </div>
+                        <div class="quiz-body">
+                            <div class="question-container">
+                                <div class="question" id="quiz-question">
+                                    <!-- Question content will be inserted here -->
+                                </div>
+                                <div class="options" id="quiz-options">
+                                    <!-- Answer options will be inserted here -->
+                                </div>
+                                <div class="explanation" id="quiz-explanation" style="display: none;">
+                                    <!-- Explanation will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz-footer">
+                            <div class="quiz-actions">
+                                <button class="btn-secondary" id="quiz-prev" disabled>Previous</button>
+                                <button class="btn-primary" id="quiz-next">Next</button>
+                            </div>
+                            <div class="quiz-status">
+                                <span id="quiz-score">Score: 0/0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Modal -->
+                <div id="results-modal" class="quiz-modal">
+                    <div class="quiz-content">
+                        <div class="quiz-header">
+                            <h2>Quiz Results</h2>
+                            <button class="quiz-close" id="results-close">✕</button>
+                        </div>
+                        <div class="quiz-body">
+                            <div class="results-content">
+                                <div class="score-display">
+                                    <div class="score-circle">
+                                        <span class="score-percentage" id="final-percentage">0%</span>
+                                    </div>
+                                    <h3 id="final-score">0 out of 26 correct</h3>
+                                    <p id="result-message">Keep studying!</p>
+                                </div>
+                                <div class="results-breakdown">
+                                    <h4>Performance by Topic:</h4>
+                                    <div id="topic-breakdown">
+                                        <!-- Topic performance will be inserted here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quiz-footer">
+                            <button class="btn-secondary" id="retry-quiz">Retake Quiz</button>
+                            <button class="btn-primary" id="back-to-study">Back to Study</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-  </body>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-nav-item active" data-view="overview">
+            <span>🏠</span>
+            <small>Overview</small>
+        </button>
+        <button class="mobile-nav-item" data-view="domains">
+            <span>📚</span>
+            <small>Domains</small>
+        </button>
+        <button class="mobile-nav-item" data-view="quizzes">
+            <span>🧠</span>
+            <small>Quizzes</small>
+        </button>
+        <button class="mobile-nav-item" data-view="progress">
+            <span>📊</span>
+            <small>Progress</small>
+        </button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
 </html>
